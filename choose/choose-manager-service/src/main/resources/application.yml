@@ -5,9 +5,9 @@ spring:
     url: jdbc:mysql://localhost/choose?useUnicode=true&characterEncoding=utf-8&serverTimezone=UTC
     driver-class-name: com.mysql.cj.jdbc.Driver
   application:
-    name: service-producer
+    name: manager-producer
 server:
-  port: 8089
+  port: 8084
 eureka:
   client:
     service-url:

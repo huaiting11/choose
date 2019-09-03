@@ -1,6 +1,8 @@
 package com.grts.choose.api.model;
 
-public class User {
+import com.grts.choose.common.base.entity.BaseEntity;
+
+public class User extends BaseEntity<User> {
     private String id;
     private String name;
 

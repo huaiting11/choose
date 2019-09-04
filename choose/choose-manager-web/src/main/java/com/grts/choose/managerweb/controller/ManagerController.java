@@ -1,6 +1,7 @@
 package com.grts.choose.managerweb.controller;
 
 import com.alibaba.fastjson.JSONObject;
+import com.github.pagehelper.PageInfo;
 import com.grts.choose.api.model.User;
 import com.grts.choose.common.persistence.Page;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -36,7 +37,7 @@ public class ManagerController {
         //JSONObject info = JSONObject.parseObject(restTemplate.getForObject("http://manager-producer/user", String.class));
         String pageSize = request.getParameter("pageSize");
         String pageNo = request.getParameter("pageNo");
-        Page<User> user = restTemplate.getForObject("http://manager-producer/getUser?pageSize="+pageSize+"&&pageNo="+pageNo, Page.class);
+        PageInfo<User> user = restTemplate.getForObject("http://manager-producer/getUser?pageSize="+pageSize+"&&pageNo="+pageNo, PageInfo.class);
         JSONObject infos = new JSONObject();
         infos.put("page",user);
         return  infos.toJSONString(); //返回json 字符串

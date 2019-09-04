@@ -15,12 +15,6 @@ eureka:
 logging:
   level:
     com.grts.choose.api.mapper : debug
-pagehelper:
-  helperDialect: mysql
-  offsetAsPageNum: true
-  rowBoundsWithCount: true
-  reasonable: false
-
-
 mybatis:
   config-location: classpath:mybatis.xml
+  mapper-locations: classpath:mapper/*Mapper.xml

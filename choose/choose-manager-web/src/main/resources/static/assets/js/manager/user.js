@@ -8,11 +8,8 @@ function user() {
 user.prototype  = {
     init: function () {
         var data = {};
+        this.$page = $(".paging");
         this.page(data,1,true);
-
-        /*var res = sendAjax("{}","getUser?pageNo=1&&pageSize=10","json");
-        var r = res.id;
-        var r = res.name;*/
     },
     page:function (data,no) {
         var that = this;
@@ -33,8 +30,40 @@ user.prototype  = {
             row = this.addrows(item,i+1);
             $(".tab").append(row);
         }
+        $(".paging").html(getStr(dataList.pageNum,dataList.pages));
+        if(dataList.count == 0){
+            $(".count").hide();
+        }else {
+            $(".count").show();
+            this.paging();
+            $(".paging").find(".total").text(dataList.count);
+            $(".paging").find(".pageSize").text(dataList.pageSize);
+        }
 
-
+    },
+    paging:function(){
+        var that = this;
+        var activePage = parseInt(that.$page.find(".activePage").text());
+        var lastPage = that.$page.children().length - 2;
+        that.$page.children().each(function (dex,ele) {
+            $(ele).click(function () {
+                if ($(ele).hasClass("activePage")) return;
+                if ($(ele).text() == "...") return;
+                //上一页
+                if (dex == 0 && activePage > 1){
+                    that.page(undefined, activePage - 1);
+                    return;
+                }
+                //下一页
+                if (dex == lastPage + 1 && activePage < lastPage){
+                    that.page(undefined, activePage + 1);
+                    return;
+                }
+                if ($(ele).text() == "") return;
+                //其他页
+                that.page(undefined, parseInt($(ele).text()));
+            });
+        });
     },
     addrows:function (data,i) {
         var userInfo  = $("#userInfo").clone();
@@ -61,10 +90,57 @@ user.prototype  = {
         
     }
 }
+function getStr(pageNo,last) {
+    var str="";
+    if(pageNo > 1){
+        str="<span></span>";
+    }else{
+        str="<span></span>";
+    }
+    if(last < 6){
+        if(pageNo >= 6) {
+            str +="<span>1</span><span>2</span><span>...</span>";
+            if(last >= pageNo + 5) {
+                for(var i = pageNo-2; i <= pageNo + 2; i++) {
+                    if(pageNo == i) {
+                       str +="<span class='activePage'>"+ i +"</span>";
+                    }else {
+                        str+="<span>"+ i +"</span>";
+                    }
+                }
+                str +="<span>...</span>";
+                str +="<span>"+ (last - 1) +"</span>";
+                str +="<span>"+ last +"</span>";
+                str +="<span></span>";
+            }else{
+                for(var i = pageNo - 2; i <= last ; i++) {
+                    if(pageNo == i) {
+                       str += "<span class='activePage'>"+ i +"</span>";
+                    }else {
+                        str += "<span>"+ i +"</span>";
+                    }
+                }
+                str += "<span></span>";
+            }
 
+        }else {
+            for(var i = 1; i <= last; i++) {
+                if(pageNo == i) {
+                    str+="<span class='activePage'>"+ i +"</span>";
+                }else {
+                    str+="<span>"+ i +"</span>";
+                }
+            }
+            if(pageNo == last) {
+                str+="<span></span>";
+            }else {
+               str+="<span></span>";
+            }
+        }
+    }
+    return str;
 
-
-
+}
 function sendAjax(data, url, dataType, callback, sync){
     var result = {};
     $.ajax({

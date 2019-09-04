@@ -18,6 +18,4 @@ spring:
     password: root
     url: jdbc:mysql://localhost/choose?useUnicode=true&characterEncoding=utf-8&serverTimezone=UTC
     driver-class-name: com.mysql.cj.jdbc.Driver
-feign:
-  hystrix:
-    enabled: true
+debug: true

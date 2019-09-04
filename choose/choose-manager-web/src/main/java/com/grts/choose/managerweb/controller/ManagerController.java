@@ -38,7 +38,7 @@ public class ManagerController {
         String pageNo = request.getParameter("pageNo");
         Page<User> user = restTemplate.getForObject("http://manager-producer/getUser?pageSize="+pageSize+"&&pageNo="+pageNo, Page.class);
         JSONObject infos = new JSONObject();
-        infos.put("user",user);
+        infos.put("page",user);
         return  infos.toJSONString(); //返回json 字符串
     }
 

@@ -12,3 +12,15 @@ eureka:
   client:
     service-url:
       defaultZone: http://localhost:8760/eureka/
+logging:
+  level:
+    com.grts.choose.api.mapper : debug
+pagehelper:
+  helperDialect: mysql
+  offsetAsPageNum: true
+  rowBoundsWithCount: true
+  reasonable: false
+
+
+mybatis:
+  config-location: classpath:mybatis.xml

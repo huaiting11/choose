@@ -9,8 +9,23 @@ userList.prototype  = {
     init: function () {
         this.bindEvent();
         this.$page = $(".paging");
+        this.$typeList = $(".form-control");
+        //配置options
+        var res = sendAjax({},"getExerList","json");
+        this.addType(res.typeList);
         var data = {};
         this.page(data,1);
+    },
+    addType:function(typeList){
+        var that = this;
+        for(var i = 0; i < typeList.length;i++){
+            var $option = $("#option");
+            $option.removeAttr("id").removeAttr("style").attr("id",typeList[i].id);
+            $option.text(typeList[i].name);
+
+        }
+        $option.append(that.$typeList)
+
     },
     page:function (data,no) {
         var that = this;

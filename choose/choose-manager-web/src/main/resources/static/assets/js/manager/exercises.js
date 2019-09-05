@@ -6,9 +6,38 @@ function exercises(){
 }
 exercises.prototype={
     init:function () {
+
         this.$page = $(".paging");
+        this.$typeList = $("#typeList");
+        //配置options
+        var res = sendAjax({},"getExerList","json");
+        this.addType(res.typeList);
         var data = {};
         this.page(data,1);
+        this.bindEvent();
+    },
+    addType:function(typeList){
+        var that = this;
+        var $select = $('<select class="form-control"></select>')
+        for(var i = 0; i < typeList.length;i++){
+            var $option = $('<option></option>');
+            $option.removeAttr("id").removeAttr("style").attr("id",typeList[i].id);
+            $option.text(typeList[i].name);
+            $select.append($option);
+        }
+        $("#f").append($select);
+
+
+    },
+    bindEvent:function(){
+        /**
+         * 搜索框事件改变，重新加载数据以及画行
+         */
+        $(".form-control").change(function(){
+            var name = $(this).children('option:selected').val();
+            $(this).children().removeClass("selected");
+            $(this).children('option:selected').addClass("selected");
+        })
     },
     page:function (data,no) {
         var that = this;

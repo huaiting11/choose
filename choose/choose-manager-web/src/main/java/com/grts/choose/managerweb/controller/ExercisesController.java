@@ -18,17 +18,17 @@ public class ExercisesController {
     public String index(){
         return "manager/exercises";
     }
-    @RequestMapping("getExerList")
-    public String getExerList(String typeId){
-
-        return null;
-    }
-    @RequestMapping("getExerList")
+    @RequestMapping("getType")
     @ResponseBody
     public String getExerList(){
         CareerOrientation[] list = restTemplate.getForObject("http://manager-producer/getType", CareerOrientation[].class);
         JSONObject info = new JSONObject();
         info.put("typeList",list);
         return  info.toJSONString();
+    }
+    @RequestMapping("getExer")
+    @ResponseBody
+    public String getExer(String exr){
+        return null;
     }
 }

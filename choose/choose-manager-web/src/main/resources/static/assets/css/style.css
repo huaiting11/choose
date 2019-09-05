@@ -955,7 +955,36 @@ img.img-circle {
 .select2-dropdown .select2-search__field:focus, .select2-search--inline .select2-search__field:focus {
     outline: none;
 }
-
+/**
+    模板之外的css
+ */
+/**************************************begin ****************************************************************/
+.paging,#p_info {
+    float: right;
+    padding-right: 40px;
+    margin-top: 18px;
+}
+.paging .activePage {
+    background-color: #5185E6;
+    border-color: #5185E6;
+    color: #FFFFFF;
+}
+.paging span {
+    float: left;
+    width: 20px;
+    height: 20px;
+    border: 1px solid #707070;
+    margin-left: 10px;
+    border-radius: 2px;
+    font-size: 12px;
+    text-align: center;
+    cursor: pointer;
+}
+.searchSchool{
+    float:right;
+    margin-right: 30px;
+}
+/**************************************end ****************************************************************/
 @media (min-width: 768px) {
     .navbar-header {
         float: none;

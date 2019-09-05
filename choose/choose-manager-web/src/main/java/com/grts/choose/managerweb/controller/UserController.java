@@ -14,22 +14,13 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 @Controller
-public class ManagerController {
+@RequestMapping("user")
+public class UserController {
     @Autowired
     RestTemplate restTemplate;
-    @RequestMapping("hello")
+    @RequestMapping("index")
     public String user(){
-        return "home";
-    }
-
-    @RequestMapping("hello1")
-    @ResponseBody
-    public  String  get(){
-        //JSONObject info = JSONObject.parseObject(restTemplate.getForObject("http://manager-producer/user", String.class));
-        User user = restTemplate.getForObject("http://manager-producer/user", User.class);
-        JSONObject infos = new JSONObject();
-        infos.put("user",user);
-        return  infos.toJSONString(); //返回json 字符串
+        return "manager/userList";
     }
     @RequestMapping("getUser")
     @ResponseBody
@@ -42,5 +33,6 @@ public class ManagerController {
         infos.put("page",user);
         return  infos.toJSONString(); //返回json 字符串
     }
+
 
 }

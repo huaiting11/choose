@@ -696,3 +696,54 @@ function loadCss(css, callback){
         });
     });
 }
+function getStr(pageNo,last) {
+    var str="";
+    if(pageNo > 1){
+        str="<span></span>";
+    }else{
+        str="<span></span>";
+    }
+    if(last < 6){
+        if(pageNo >= 6) {
+            str +="<span>1</span><span>2</span><span>...</span>";
+            if(last >= pageNo + 5) {
+                for(var i = pageNo-2; i <= pageNo + 2; i++) {
+                    if(pageNo == i) {
+                        str +="<span class='activePage'>"+ i +"</span>";
+                    }else {
+                        str+="<span>"+ i +"</span>";
+                    }
+                }
+                str +="<span>...</span>";
+                str +="<span>"+ (last - 1) +"</span>";
+                str +="<span>"+ last +"</span>";
+                str +="<span></span>";
+            }else{
+                for(var i = pageNo - 2; i <= last ; i++) {
+                    if(pageNo == i) {
+                        str += "<span class='activePage'>"+ i +"</span>";
+                    }else {
+                        str += "<span>"+ i +"</span>";
+                    }
+                }
+                str += "<span></span>";
+            }
+
+        }else {
+            for(var i = 1; i <= last; i++) {
+                if(pageNo == i) {
+                    str+="<span class='activePage'>"+ i +"</span>";
+                }else {
+                    str+="<span>"+ i +"</span>";
+                }
+            }
+            if(pageNo == last) {
+                str+="<span></span>";
+            }else {
+                str+="<span></span>";
+            }
+        }
+    }
+    return str;
+
+}

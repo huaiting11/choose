@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<!-- 左侧导航 -->
+    <aside class="main-sidebar" th:fragment="navBar">
+        <div class="user-panel">
+            <div class="image pull-left">
+                <img src="assets/avatars/avatars.png" alt="">
+            </div>
+            <div class="info pull-right">
+                <p class="title">Alpha</p>
+                <strong>超级111管121212121理员</strong>
+            </div>
+        </div>
+        <section class="sidebar">
+            <ul class="sidebar-menu" data-widget="tree">
+                <li class="active">
+                    <a href="index.html" title="仪表盘">
+                        <i class="iconfont icon-dashborad"></i>
+                        <small>仪表盘</small>
+                    </a>
+                </li>
+                <li class="treeview">
+                    <a href="#" title="习题管理">
+                        <i class="iconfont icon-chart"></i>
+                        <small>习题管理</small>
+                        <span class=" pull-right">
+                                    <i class="iconfont icon-menu-left-small"></i>
+                                </span>
+                    </a>
+                    <ul class="treeview-menu">
+                        <li>
+                            <a href="/exercises/index">
+                                <i class="iconfont icon-circle-hollow"></i>
+                                <small>习题管理</small>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="pages/chart/echartjs.html">
+                                <i class="iconfont icon-circle-hollow"></i>
+                                <small>EChart.JS</small>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+                <li class="treeview">
+                    <a href="#" title="用户信息管理">
+                        <i class="iconfont icon-form"></i>
+                        <small>用户信息管理</small>
+                        <span class=" pull-right">
+                                    <i class="iconfont icon-menu-left-small"></i>
+                                </span>
+                    </a>
+                    <ul class="treeview-menu">
+                        <li>
+                            <a href="/user/index">
+                                <i class="iconfont icon-circle-hollow"></i>
+                                <small>用户信息管理</small>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="pages/forms/advanced.html">
+                                <i class="iconfont icon-circle-hollow"></i>
+                                <small>高级表单</small>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="pages/forms/editor.html">
+                                <i class="iconfont icon-circle-hollow"></i>
+                                <small>富文本</small>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+                <li class="treeview">
+                    <a href="#" title="UI元素">
+                        <i class="iconfont icon-components"></i>
+                        <small>UI元素</small>
+                        <span class=" pull-right">
+                                    <i class="iconfont icon-menu-left-small"></i>
+                                </span>
+                    </a>
+                    <ul class="treeview-menu">
+                        <li>
+                            <a href="/exercises/index">
+                                <i class="iconfont icon-circle-hollow"></i>
+                                <small>题库管理</small>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="pages/ui/icon.html">
+                                <i class="iconfont icon-circle-hollow"></i>
+                                <small>图标</small>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="pages/ui/other.html">
+                                <i class="iconfont icon-circle-hollow"></i>
+                                <small>其他</small>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+                <li class="treeview">
+                    <a href="#">
+                        <i class="iconfont icon-table"></i>
+                        <small>表格</small>
+                        <span class=" pull-right">
+                                    <i class="iconfont icon-menu-left-small"></i>
+                                </span>
+                    </a>
+                    <ul class="treeview-menu">
+                        <li>
+                            <a href="pages/table/table.html">
+                                <i class="iconfont icon-circle-hollow"></i>
+                                <small>简单表格</small>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="pages/table/data.html">
+                                <i class="iconfont icon-circle-hollow"></i>
+                                <small>数据表格</small>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+                <li class="treeview">
+                    <a href="#">
+                        <i class="iconfont icon-folder"></i>
+                        <small>页面</small>
+                        <span class=" pull-right">
+                                    <i class="iconfont icon-menu-left-small"></i>
+                                </span>
+                    </a>
+                    <ul class="treeview-menu">
+                        <li>
+                            <a href="pages/page/login.html">
+                                <i class="iconfont icon-circle-hollow"></i>
+                                <small>登录页面</small>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="pages/page/register.html">
+                                <i class="iconfont icon-circle-hollow"></i>
+                                <small>注册页面</small>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="pages/page/404.html">
+                                <i class="iconfont icon-circle-hollow"></i>
+                                <small>404页面</small>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+                <li class="treeview">
+                    <a href="#">
+                        <i class="iconfont icon-category"></i>
+                        <small>多级菜单</small>
+                        <span class=" pull-right">
+                                    <i class="iconfont icon-menu-left-small"></i>
+                                </span>
+                    </a>
+                    <ul class="treeview-menu">
+                        <li class="treeview">
+                            <a href="#">
+                                <i class="iconfont icon-circle-hollow"></i>
+                                <small>二级菜单</small>
+                                <span class=" pull-right">
+                                            <i class="iconfont icon-menu-left-small"></i>
+                                        </span>
+                            </a>
+                            <ul class="treeview-menu">
+                                <li class="treeview">
+                                    <a href="#">
+                                        <i class="iconfont icon-circle-hollow"></i>
+                                        <small>三级菜单</small>
+                                        <span class=" pull-right">
+                                                    <i class="iconfont icon-menu-left-small"></i>
+                                                </span>
+                                    </a>
+                                    <ul class="treeview-menu">
+                                        <li>
+                                            <a href="#">
+                                                <i class="iconfont icon-circle-hollow"></i>
+                                                <small>四级菜单</small>
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </li>
+                        <li>
+                            <a href="#">
+                                <i class="iconfont icon-circle-hollow"></i>
+                                <small>二级菜单</small>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+        </section>
+    </aside>
+</body>
+</html>

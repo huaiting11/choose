@@ -1,9 +1,11 @@
 package com.grts.choose.api.model;
 
+import com.grts.choose.common.base.entity.BaseEntity;
+
 /**
  * 习题
  */
-public class Exercises {
+public class Exercises extends BaseEntity<Exercises> {
     private String id;
     /**
      * 题目

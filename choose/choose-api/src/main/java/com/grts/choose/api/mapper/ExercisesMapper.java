@@ -13,5 +13,4 @@ public interface ExercisesMapper {
     @Select("select * from t_exercises where careerOrientation_id = #{carOrientId}")
     public List<Exercises> getAllByCarOrient(String carOrientId);
 
-
 }

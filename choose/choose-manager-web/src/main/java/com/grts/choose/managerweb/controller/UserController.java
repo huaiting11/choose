@@ -33,6 +33,14 @@ public class UserController {
         infos.put("page",user);
         return  infos.toJSONString(); //返回json 字符串
     }
+    @RequestMapping("getSchool")
+    @ResponseBody
+    public String getSchool(){
+        String[] schools = restTemplate.getForObject("http://manager-producer/getSchool?",String[].class);
+        JSONObject info = new JSONObject();
+        info.put("schoolName",schools);
+        return  info.toJSONString();
+    }
 
 
 }

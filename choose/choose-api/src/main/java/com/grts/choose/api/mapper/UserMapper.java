@@ -10,6 +10,6 @@ import java.util.List;
 public interface UserMapper extends BaseDao<User> {
    // @Select("select * from t_user where id = #{userId}")
     public User getById(String userId);
-
+    public List<String> getSchoolName();
 }
 

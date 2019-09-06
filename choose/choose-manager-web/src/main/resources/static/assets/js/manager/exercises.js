@@ -8,35 +8,37 @@ exercises.prototype={
     init:function () {
 
         this.$page = $(".paging");
-        this.$typeList = $("#typeList");
         //配置options
-        var res = sendAjax({},"getExerList","json");
+        var res = sendAjax({},"getType","json");
         this.addType(res.typeList);
         var data = {};
         this.page(data,1);
         this.bindEvent();
     },
     addType:function(typeList){
-        var that = this;
-        var $select = $('<select class="form-control"></select>')
+        var $select = $('<select class="form-control"></select>');
         for(var i = 0; i < typeList.length;i++){
             var $option = $('<option></option>');
-            $option.removeAttr("id").removeAttr("style").attr("id",typeList[i].id);
-            $option.text(typeList[i].name);
+            $option.val(typeList[i].id).text(typeList[i].name);
             $select.append($option);
         }
-        $("#f").append($select);
-
-
+        $("#typeList").append($select);
     },
     bindEvent:function(){
         /**
          * 搜索框事件改变，重新加载数据以及画行
          */
+        var that = this;
         $(".form-control").change(function(){
-            var name = $(this).children('option:selected').val();
+            var id = $(this).children('option:selected').val();
             $(this).children().removeClass("selected");
             $(this).children('option:selected').addClass("selected");
+            //重新加载数据
+            var data= {};
+            var exr ={};
+            data.exr = JSON.stringify(exr);
+            data.careerId = id;
+            that.page(data,1);
         })
     },
     page:function (data,no) {
@@ -47,7 +49,7 @@ exercises.prototype={
         }
         data2.pageNo = no;
         data2.pageSize=3;
-        var re = sendAjax(data2,"getExerList","json");
+        var re = sendAjax(data2,"getExer","json");
         var dataList = re.page;
         if (isEmpty(dataList)) return;
         var list = dataList.list;
@@ -94,7 +96,7 @@ exercises.prototype={
         });
     },
     addRows:function (data,i) {
-        var userInfo  = $("#userInfo").clone();
+        var userInfo  = $("#exercise").clone();
         userInfo.removeAttr("id").removeAttr("style");
         userInfo.addClass("line");
         userInfo.attr("id",data.id);
@@ -104,13 +106,39 @@ exercises.prototype={
                     $(node).text(i);
                     break;
                 case 1:
-                    $(node).text(data.name);
+                    $(node).text(data.title);
                     break;
                 case 2:
-                    $(node).text(data.name);
+                    $(node).text(data.optionA);
                     break;
                 case 3:
-                    $(node).text(data.name);
+                    $(node).text(data.optionB);
+                    break;
+                case 4:
+                    $(node).text(data.optionC);
+                    break;
+                case 5:
+                    $(node).text(data.optionD);
+                    break;
+                case 6: //编辑 删除
+                    $(node).children().each(function (index,ele) {
+                        if(index == 0){
+                            $(ele).click(function () {
+                                sendAjax({},"link","json",function (re) {
+                                    window.location.href = "/exercises/exerEdit?exerId="+userInfo.attr("id");
+                                })
+                            })
+                        }
+                        if(index == 1){
+                            $(ele).click(function () {
+                                var isDel = confirm("是否确定删除");
+                                if(isDel){
+                                   // sendAjax("")
+                                    alert("dfdfdsfsd");
+                                }
+                            })
+                        }
+                    })
                     break;
             }
         });

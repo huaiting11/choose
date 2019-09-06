@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.grts.choose.api.mapper.ExercisesDao" >
+    <resultMap type="com.grts.choose.api.model.Exercises" id="baseMap">
+        <association property="careerOrientation" column="careerOrientation_id" select="com.grts.choose.api.mapper.CareerOrientationMapper.getById"/>
+    </resultMap>
+    <sql id="baseSql">
+        id,title,optionA,optionB,optionC,optionD,answer
+    </sql>
+    <select id="findList" resultMap="baseMap" parameterType="com.grts.choose.api.model.Exercises">
+        select * from t_exercises
+        <where>
+            <if test="careerOrientation != null">
+                careerOrientation_id = #{careerOrientation.id}
+            </if>
+        </where>
+    </select>
+    <select id="getExerById" resultMap="baseMap" parameterType="String">
+        select * from t_exercises where id= #{exerId}
+    </select>
+    <insert id="insert" parameterType="com.grts.choose.api.model.Exercises">
+        insert into t_exercises
+        <trim prefix="(" suffix=")" suffixOverrides="," >
+            <if test="id != null" >
+                id,
+            </if>
+            <if test="title != null" >
+                title,
+            </if>
+            <if test="optionA != null" >
+                optionA,
+            </if>
+            <if test="optionB != null" >
+                optionB,
+            </if>
+            <if test="optionC != null" >
+                optionC,
+            </if>
+            <if test="optionD != null" >
+                optionD,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides="," >
+            <if test="id != null" >
+                #{id},
+            </if>
+            <if test="title != null" >
+                #{title},
+            </if>
+            <if test="optionA != null" >
+                #{optionA},
+            </if>
+            <if test="optionB != null" >
+                #{optionB},
+            </if>
+            <if test="optionC != null" >
+                #{optionC},
+            </if>
+            <if test="optionD != null" >
+                #{optionD},
+            </if>
+        </trim>
+    </insert>
+    <update id="update" parameterType="com.grts.choose.api.model.Exercises" >
+        update t_exercises
+        <set >
+            <if test="title != null" >
+                title = #{title},
+            </if>
+            <if test="optionA != null" >
+                optionA = #{optionA},
+            </if>
+            <if test="optionB != null" >
+                optionB = #{optionB},
+            </if>
+            <if test="optionC != null" >
+                optionC = #{optionC},
+            </if>
+            <if test="optionD != null" >
+                optionD = #{optionD},
+            </if>
+            <if test="answer != null" >
+                answer = #{answer},
+            </if>
+        </set>
+        where id = #{id}
+    </update>
+</mapper>

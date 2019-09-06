@@ -9,22 +9,22 @@ userList.prototype  = {
     init: function () {
         this.bindEvent();
         this.$page = $(".paging");
-        this.$typeList = $(".form-control");
+        this.$schoolList = $("#schoolList");
         //配置options
-        var res = sendAjax({},"getExerList","json");
-        this.addType(res.typeList);
-        var data = {};
-        this.page(data,1);
+       var res = sendAjax({},"getSchool","json");
+       this.addType(res.schoolName);
+       var data = {};
+       this.page(data,1);
     },
-    addType:function(typeList){
+    addType:function(schoolName){
         var that = this;
-        for(var i = 0; i < typeList.length;i++){
-            var $option = $("#option");
-            $option.removeAttr("id").removeAttr("style").attr("id",typeList[i].id);
-            $option.text(typeList[i].name);
-
+        var $select = $('<select class="form-control"></select>');
+        for(var i = 0; i < schoolName.length;i++){
+            var $option = $('<option></option>');
+            $option.val(schoolName[i]).text(schoolName[i]);
+            $select.append($option);
         }
-        $option.append(that.$typeList)
+        that.$schoolList.append($select);
 
     },
     page:function (data,no) {

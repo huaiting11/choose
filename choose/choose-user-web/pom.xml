@@ -9,11 +9,13 @@
     <description>Demo project for Spring Boot</description>
     <parent>
         <groupId>com.grts.choose</groupId>
-        <artifactId>choose-common</artifactId>
+        <artifactId>choose-parent</artifactId>
         <version>1.0-SNAPSHOT</version>
     </parent>
+    <properties>
+        <java.version>1.8</java.version>
+    </properties>
     <dependencies>
-
         <dependency>
             <groupId>com.grts.choose</groupId>
             <artifactId>choose-common</artifactId>
@@ -21,8 +23,34 @@
         </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-thymeleaf</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
         </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-devtools</artifactId>
+            <optional>true</optional>
+        </dependency>
+        <dependency>
+            <groupId>com.grts.choose</groupId>
+            <artifactId>choose-api</artifactId>
+            <version>1.0-SNAPSHOT</version>
+        </dependency>
+        <dependency>
+            <groupId>com.github.pagehelper</groupId>
+            <artifactId>pagehelper-spring-boot-starter</artifactId>
+            <version>1.2.10</version>
+        </dependency>
     </dependencies>
-
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+            </plugin>
+        </plugins>
+    </build>
 </project>

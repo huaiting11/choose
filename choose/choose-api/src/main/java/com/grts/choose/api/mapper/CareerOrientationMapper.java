@@ -11,7 +11,7 @@ public interface CareerOrientationMapper {
     @Select("select * from t_careerOrientation")
     public List<CareerOrientation> getType();
     @Select("select * from t_careerOrientation where id = #{id}")
-    public List<CareerOrientation> getById(String id);
+    public CareerOrientation getById(String id);
 
 
 }

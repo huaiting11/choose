@@ -24,28 +24,22 @@ exerciseList.prototype={
         this.bindEvents();
 
     },
+    //绑定用户职业方向
     loadCarr:function (dataList) {
         var that = this;
         for (var i = 0; i < dataList.length; i++) {
             var item = dataList[i];
             var $li = $('<li class="tab_li"></li>');
+            if(i==0){
+                $li.addClass("selectLi");
+            }
             $li.attr("id",item.careerOrientation.id);
-
             $li.text(item.careerOrientation.name);
             this.$tab.append($li);
-            $li.click(function (index,ele) {
-                alert("切换职业方向类型,之前保存的做题记录会丢失");
-                var carrId = $li.attr("id");
-                var  userCarr = {};
-                userCarr.carrId =carrId;
-                var res = sendAjax(userCarr,"getExercisesByCarr","json");
-                that.exerList =  res.exerList;
-                that.currentIndex = 0;
-                that.loadExerList(that.exerList[0]);
-            })
         }
 
     },
+    //加载试题
     loadExerList:function (exerList) {
         $(".options_subject").text(exerList.title);
        $(".options_abcd").detach();
@@ -61,8 +55,36 @@ exerciseList.prototype={
         $(".options_subject").after($ul);
 
     },
+    changeExer:function(){
+        var that = this;
+        $(".options_Choice li input").removeAttr("checked");
+        $(".options_Choice li input").each(function (index,ele) {
+            var option = $(ele).val();
+            if(option=== that.exerList[that.currentIndex].userOption){
+                $(ele).prop("checked",true);
+            }
+        })
+        var index = that.currentIndex+1;
+        $(".Progress_img div").width(28*index);
+        $(".Progress_text").text(index+"/15");
+    },
     bindEvents :function () {
         var that = this;
+        $(".tab_li").click(function () {
+            var isChange = confirm("切换类型，之前数据丢失");
+            if(isChange){
+                var carrId = $(this).attr("id");
+                var  userCarr = {};
+                userCarr.carrId =carrId;
+                var res = sendAjax(userCarr,"getExercisesByCarr","json");
+                that.exerList =  res.exerList;
+                that.currentIndex = 0;
+                that.loadExerList(that.exerList[0]);
+                $(".tab_li").removeClass("selectLi");
+                $(this).addClass("selectLi");
+            }
+        })
+        // 上一题
         $(".center_left_image img").click(function () {
             if(that.currentIndex == 0){
                 return;
@@ -70,15 +92,10 @@ exerciseList.prototype={
                 that.currentIndex = that.currentIndex-1;
                 that.loadExerList(that.exerList[that.currentIndex]);
             }
-            $(".options_Choice li input").removeAttr("checked");
-            $(".options_Choice li input").each(function (index,ele) {
-                var option = $(ele).val();
-                if(option=== that.exerList[that.currentIndex].userOption){
-                    $(ele).prop("checked",true);
-                }
-            })
+            that.changeExer();
 
         })
+        //下一题
         $(".center_right_image img").click(function (){
             if(that.currentIndex == that.exerList.length-1){
                 return
@@ -86,13 +103,7 @@ exerciseList.prototype={
                 that.currentIndex = that.currentIndex+1;
                 that.loadExerList(that.exerList[that.currentIndex]);
             }
-            $(".options_Choice li input").removeAttr("checked");
-            $(".options_Choice li input").each(function (index,ele) {
-                var option = $(ele).val();
-                if(option=== that.exerList[that.currentIndex].userOption){
-                    $(ele).prop("checked",true);
-                }
-            })
+            that.changeExer();
 
         })
         $(".options_Choice li input").click(function(){

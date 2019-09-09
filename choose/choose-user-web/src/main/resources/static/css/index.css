@@ -319,4 +319,6 @@ button{
 .center_left_image,.center_right_image{
 	cursor:pointer;
 }
-
+.selectLi{
+	color:#4DA7FF
+}

@@ -10,7 +10,7 @@ import java.util.List;
 public interface ExercisesMapper {
     @Select("select * from t_exercises")
     public List<Exercises> getAll();
-    @Select("select * from t_exercises where careerOrientation_id = #{carOrientId}")
+    @Select("select * from t_exercises where careerOrientation_id = #{carOrientId}  order by rand() limit 15")
     public List<Exercises> getAllByCarOrient(String carOrientId);
 
 }

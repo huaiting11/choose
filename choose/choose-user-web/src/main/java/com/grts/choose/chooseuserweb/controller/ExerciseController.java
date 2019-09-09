@@ -1,6 +1,7 @@
 package com.grts.choose.chooseuserweb.controller;
 
 import com.alibaba.fastjson.JSONObject;
+import com.grts.choose.api.model.Exercises;
 import com.grts.choose.api.model.UserCareerOrientation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -25,5 +26,14 @@ public class ExerciseController {
         info.put("userCarr",userCarr);
         return  info.toJSONString();
     }
+    @RequestMapping("getExercisesByCarr")
+    @ResponseBody
+    public String getExercisesByCarr(String carrId){
+        Exercises[] exerList = restTemplate.getForObject("http://SERVICE-PRODUCER/exercise/getExercisesByCarr?carrId="+carrId, Exercises[].class);
+        JSONObject info = new JSONObject();
+        info.put("exerList",exerList);
+        return info.toJSONString();
+    }
+
 
 }

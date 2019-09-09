@@ -1,6 +1,8 @@
 package com.grts.choose.chooseuserservice.service.impl;
 
+import com.grts.choose.api.mapper.ExercisesMapper;
 import com.grts.choose.api.mapper.UserCareerOrientationMapper;
+import com.grts.choose.api.model.Exercises;
 import com.grts.choose.api.model.UserCareerOrientation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -14,10 +16,19 @@ import java.util.List;
 public class ExerciseServiceImpl {
     @Autowired
     UserCareerOrientationMapper userCareerMapper;
+    @Autowired
+    ExercisesMapper exercisesMapper;
+
     @RequestMapping("getCarrorByUser")
     @ResponseBody
     public List<UserCareerOrientation> getCarrorByUser(String userId){
         return  userCareerMapper.getUserCarrByUser(userId);
     }
+    @RequestMapping("getExercisesByCarr")
+    @ResponseBody
+    public List<Exercises> getExercisesByCarr(String carrId){
+        return  exercisesMapper.getAllByCarOrient(carrId);
+    }
+
 
 }

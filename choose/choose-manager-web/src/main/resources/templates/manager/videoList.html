@@ -18,7 +18,30 @@
     <!--左边侧边栏-->
     <div th:replace="~{common/navBar::navBar}"></div>
     <div class="page-wrapper">
-        <input type="file" id="uploadFile" class="uploadFile1 " accept=".xlsx,.xls,.pdf,.doc,.docx" title="点击上传文件">上传文件
+
+        <section class="page-body">
+            <div class="row widget">
+                <div class="form col-lg-3 widget-drag searchSchool">
+                    <div>
+                        <div class="form-group" id="typeList">
+                              <select class="form-control" >
+                                <option>2</option>
+                                <option>3</option>
+                                <option>4</option>
+                                <option>5</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <section class="col-lg-12 widget-drag">
+                <form action="uploadVideo" method="post" enctype="multipart/form-data">
+                    文件: <input type="file" name="file" multiple="multiple"/><br><br>
+                    描述: <input type="text" name="desc"/><br><br>
+                    <input type="submit" value="提交"/>
+                </form>
+            </section>
+        </section>
     </div>
     <!-- 修改密码模态框 -->
     <div class="modal fade menu-setpassword" tabindex="-1" role="dialog">

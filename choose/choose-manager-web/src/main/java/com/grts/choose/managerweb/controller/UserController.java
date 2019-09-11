@@ -24,10 +24,8 @@ public class UserController {
     }
     @RequestMapping("getUser")
     @ResponseBody
-    public  String  getUser(HttpServletRequest request, HttpServletResponse response){
+    public  String  getUser(String pageSize , String pageNo){
         //JSONObject info = JSONObject.parseObject(restTemplate.getForObject("http://manager-producer/user", String.class));
-        String pageSize = request.getParameter("pageSize");
-        String pageNo = request.getParameter("pageNo");
         PageInfo<User> user = restTemplate.getForObject("http://manager-producer/getUser?pageSize="+pageSize+"&&pageNo="+pageNo, PageInfo.class);
         JSONObject infos = new JSONObject();
         infos.put("page",user);

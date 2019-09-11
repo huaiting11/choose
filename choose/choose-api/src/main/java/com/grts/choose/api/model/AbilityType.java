@@ -1,6 +1,8 @@
 package com.grts.choose.api.model;
 
-public class VoideoType {
+import com.grts.choose.common.base.entity.BaseEntity;
+
+public class AbilityType  extends BaseEntity<AbilityType> {
     private String id;
     private String name;
 

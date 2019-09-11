@@ -1041,4 +1041,8 @@ img.img-circle {
     .page-wrapper {
         margin-left: 0;
     }
+    .videoD{
+        width:100px;
+        height: 30px;
+    }
 }

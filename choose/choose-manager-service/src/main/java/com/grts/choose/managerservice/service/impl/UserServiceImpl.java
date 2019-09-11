@@ -28,8 +28,7 @@ public class UserServiceImpl extends BaseService<UserMapper, User>   {
         User users = new User();
         PageHelper.startPage(Integer.valueOf(pageNo), Integer.valueOf(pageSize));
         List<User> userList = userMapper.findList(users);
-        PageInfo<User> pageInfo = new PageInfo<>(userList);
-        return pageInfo;
+        return new PageInfo<>(userList);
     }
     @RequestMapping("getSchool")
     @ResponseBody

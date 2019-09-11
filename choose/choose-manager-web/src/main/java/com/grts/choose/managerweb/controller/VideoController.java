@@ -12,7 +12,7 @@ import java.util.List;
 
 @Controller
 @RequestMapping("video")
-public class videoController {
+public class VideoController {
     @RequestMapping("index")
     public String index(){
         return "manager/videoList";

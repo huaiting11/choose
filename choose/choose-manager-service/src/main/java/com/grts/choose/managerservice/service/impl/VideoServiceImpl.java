@@ -47,8 +47,8 @@ public class VideoServiceImpl extends BaseService<AbilityTypeMapper, AbilityType
             AbilityVideo abilityVideo = new AbilityVideo();
             abilityVideo.setAbilitytype(files.getTypeId());
             abilityVideo.setId(IdGen.uuid());
-            abilityVideo.setShowName(nfiles.get(i));
-            abilityVideo.setStoreName(ofiles.get(i));
+            abilityVideo.setShowName(ofiles.get(i));
+            abilityVideo.setStoreName(nfiles.get(i));
             abilityVideoeMapper.save(abilityVideo);
         }
         return "success";

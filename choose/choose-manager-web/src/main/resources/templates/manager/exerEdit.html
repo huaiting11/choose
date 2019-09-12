@@ -10,6 +10,11 @@
     <link rel="stylesheet" type="text/css" href="/assets/css/bootstrap-table.min.css">
     <link rel="stylesheet" type="text/css" href="/assets/css/iconfont.css">
     <link rel="stylesheet" type="text/css" href="/assets/css/style.css">
+    <style>
+        #back {
+
+        }
+    </style>
 </head>
 <body>
 <div class="skin-default" id="wrapper">
@@ -21,7 +26,10 @@
     <div class="page-wrapper">
         <section class="page-body">
             <div class="row widget">
-                <section class="col-lg-12">
+                <div  class="col-lg-12">
+                    <div id="back">
+                        <a href="/exercises/index">返回</a>
+                    </div>
                     <div class="box form">
                         <div class="box-header">
                             <h3 class="box-title">编辑试题</h3>
@@ -69,75 +77,14 @@
                             </form>
                         </div>
                     </div>
+                </div>
+            </div>
         </section>
     </div>
-    <!-- 修改密码模态框 -->
-    <div class="modal fade menu-setpassword" tabindex="-1" role="dialog">
-        <div class="modal-dialog modal-sm" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                    <h4 class="modal-title">修改密码</h4>
-                </div>
-                <div class="modal-body">
-                    <table class="table">
-                        <tbody>
-                        <tr>
-                            <th>
-                                旧密码
-                            </th>
-                            <td>
-                                <input type="text" class="form-control" placeholder="请输入旧密码" name="js-oldPassword">
-                            </td>
-                        </tr>
-                        <tr>
-                            <th>
-                                新密码
-                            </th>
-                            <td>
-                                <input type="text" class="form-control" placeholder="请输入新密码" name="js-newPassword">
-                            </td>
-                        </tr>
-                        <tr>
-                            <th>
-                                确认密码
-                            </th>
-                            <td>
-                                <input type="text" class="form-control" placeholder="请再次输入新密码" name="js-verifyPassword">
-                            </td>
-                        </tr>
-                        </tbody>
-                    </table>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
-                    <button type="button" class="btn btn-primary">保存</button>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- 退出提示模态框 -->
-    <div class="modal fade menu-logout" tabindex="-1" role="dialog">
-        <div class="modal-dialog modal-sm" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                    <h4 class="modal-title">提示</h4>
-                </div>
-                <div class="modal-body">
-                    <p>是否确定退出</p>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
-                    <button type="button" class="btn btn-primary">登出</button>
-                </div>
-            </div>
-        </div>
-    </div>
+    <div th:replace="~{common/dialog::menu-setpassword}"></div>
+    <div th:replace="~{common/dialog::menu-logout}"></div>
+    <div th:replace="~{common/dialog::del}"></div>
+
 </div>
 <script type="text/javascript" src="/assets/js/plugins/jquery-2.1.0.min.js"></script>
 <script type="text/javascript" src="/assets/js/plugins/jquery-ui.min.js"></script>

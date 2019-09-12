@@ -37,7 +37,7 @@ public class VideoController {
         return  info.toJSONString();
     }
     @RequestMapping("uploadVideo")
-    public String uploadVideo(@RequestParam("file") MultipartFile[] multipartFile,String carrId){
+    public String uploadVideo(@RequestParam("file") MultipartFile[] multipartFile,String videoTypeId){
         List<String> oNames = new ArrayList<String>();
         List<String> fNames = new ArrayList<String>();
         for (int i = 0; i < multipartFile.length; i++) {
@@ -53,7 +53,7 @@ public class VideoController {
                 if (!upload.exists()) upload.mkdirs();
                 String uploadPath = path + File.separator + oName;
                 File file1 = new File(uploadPath);
-                fNames.add("http://localhost:8080/"+oName);
+                fNames.add("http://localhost:8089/video/"+oName);
                 file1.mkdirs();
                 file.transferTo(file1);
 
@@ -65,9 +65,9 @@ public class VideoController {
         Video video =new Video();
         video.setOldNeme(oNames);   // 旧的
         video.setStoreName(fNames); // 新的存储地址
-        video.setTypeId(carrId);
+        video.setTypeId(videoTypeId);
         ResponseEntity<String> responseEntity = restTemplate.postForEntity("http://manager-producer/video/uploadVideo",video,String.class);
-        return "manager/videoList";
+        return "redirect:index";
     }
 
     @RequestMapping("getVideoList")

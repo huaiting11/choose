@@ -984,6 +984,10 @@ img.img-circle {
     float:right;
     margin-right: 30px;
 }
+.videoD{
+    width:200px;
+    height: 50px;
+}
 /**************************************end ****************************************************************/
 @media (min-width: 768px) {
     .navbar-header {
@@ -1041,8 +1045,5 @@ img.img-circle {
     .page-wrapper {
         margin-left: 0;
     }
-    .videoD{
-        width:100px;
-        height: 30px;
-    }
+
 }

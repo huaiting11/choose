@@ -131,11 +131,11 @@ exercises.prototype={
                         }
                         if(index == 1){
                             $(ele).click(function () {
-                                var isDel = confirm("是否确定删除");
-                                if(isDel){
+                                $(".del").modal("show");
+                                /*if(isDel){
                                    // sendAjax("")
                                     alert("dfdfdsfsd");
-                                }
+                                }*/
                             })
                         }
                     })

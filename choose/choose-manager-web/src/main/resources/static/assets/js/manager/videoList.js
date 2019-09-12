@@ -6,19 +6,21 @@ function videoList() {
 }
 videoList.prototype={
     init:function () {
+        this.$page = $(".paging");
         this.$typeList = $("#typeList");
         this.$typeId = $("#videoTypeId");
+        this.$videoList = $(".videoList");
         var  res = sendAjax({},"getAbilityType","json");
         this.$typeId.val(res.abilityType[0].id);
         this.loadOption(res.abilityType);
         this.bindEvent();
         var data={};
         data.typeId = res.abilityType[0].id;
-       // this.page(data,1);
+        this.page(data,1);
 
     },
     loadOption:function (abilityType) {
-        var $select = $('<select class="form-control" >');
+        var $select = $('<select class="form-control " >');
         for (var i = 0; i < abilityType.length; i++) {
             var $option = $('<option></option>');
             $option.text(abilityType[i].name);
@@ -30,6 +32,7 @@ videoList.prototype={
         /**
          * 搜索框事件改变，重新加载数据以及画行
          */
+       // $(".del").modal("show"); 模态框的显示
         var that = this;
         $(".form-control").change(function(){
             var id = $(this).children('option:selected').val();
@@ -38,8 +41,11 @@ videoList.prototype={
             that.$typeId.val(id);
         })
 
-    }/*,
-    addRows:function () {
+    },
+    addRows:function (item) {
+        var $video = $('<video class="videoD" controls="controls videoD"></video>');
+        $video.attr("src",item.storeName);
+        return $video;
 
     },
     page:function (data,no) {
@@ -49,17 +55,20 @@ videoList.prototype={
             data2 = data;
         }
         data2.pageNo = no;
-        data2.pageSize=3;
+        data2.pageSize=2;
+        if(data2.typeId == undefined){
+            data2.typeId=that.$typeId.val();
+        }
         var re = sendAjax(data2,"getVideoList","json");
         var dataList = re.page;
         if (isEmpty(dataList)) return;
         var list = dataList.list;
-        $(".tab").find(".line").detach();
+        that.$videoList.find("video").detach();
         for (var i = 0; i < list.length; i++){
             var item = list[i];
             var row = "";
             row = this.addRows(item,i+1);
-            $(".tab").append(row);
+            that.$videoList.append(row);
         }
         $(".paging").html(getStr(dataList.pageNum,dataList.pages));
         if(dataList.count == 0){
@@ -95,5 +104,5 @@ videoList.prototype={
                 that.page(undefined, parseInt($(ele).text()));
             });
         });
-    },*/
+    },
 }

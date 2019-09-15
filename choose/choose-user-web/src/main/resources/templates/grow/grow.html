@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+		<title>grow_paging</title>
+		<link type="text/css" rel="stylesheet" href="/css/topBar.css" />
+		<link type="text/css" rel="stylesheet" href="/css/grow.css" />
+
+	</head>
+	<body>
+		<div class="div_all">
+			<!--顶部菜单-->
+			<div th:replace="~{common/topBar::topBar}"></div>
+			<!--注册内容div-->
+			<!--<div class="all_register">
+				
+			</div>-->
+			<div class="centent">
+				<div class="centent_tab">
+					<ul class="tab">
+						<li class="tab_direction">分类：</li>
+					</ul>
+				</div>
+			</div>
+			<!--视频内容展示-->
+			<div class="all_it">
+				<div class="it">
+					<div class="video">
+						<div class="video_img">
+							<video class="videoD" src="/assets/video/44.mp4" controls="controls"></video>
+						</div>
+						<div class="video_explain">
+							<p>数据结构与算法</p>
+							<p>《数据结构与算法》课程是计算机科学与技术的学科基础课程，不仅是...</p>
+						</div>
+					</div>
+
+				</div>
+				<!--分页-->
+
+			</div>
+			<div class="count">
+				<div class="paging">
+					<span><<</span><span class="activePage">1</span><span>2</span><span>>></span>
+				</div>
+			</div>
+			<!--联系我们-->
+			<!--<div class="all_Contact">
+				<div class="contact">
+					
+				</div>
+			</div>-->
+			<!--工商备案信息-->
+			<div class="all_bottom">
+				<p>©2019 Baidu 使用百度前必读 意见反馈 京ICP证030173号 京公网安备11000002000001号 </p>
+			</div>
+		</div>
+	</body>
+
+	<script type="text/javascript" src="/js/plugins/jquery-2.1.0.min.js"></script>
+	<script type="text/javascript" src="/js/plugins/jquery-ui.min.js"></script>
+	<script type="text/javascript" src="/js/plugins/bootstrap.min.js"></script>
+	<script type="text/javascript" src="/js/plugins/Chart.min.js"></script>
+	<script type="text/javascript" src="/js/plugins/echarts.min.js"></script>
+	<script type="text/javascript" src="/js/plugins/alpha.js"></script>
+	<script type="text/javascript" src="/js/plugins/helperUtils.js"></script>
+	<script type="text/javascript" src="/js/exercise/grow.js"></script>
+</html>

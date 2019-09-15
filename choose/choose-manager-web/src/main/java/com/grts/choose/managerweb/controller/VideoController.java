@@ -49,7 +49,7 @@ public class VideoController {
             oNames.add(oName);
             try {
                 File path = new File(ResourceUtils.getURL("classpath:").getPath());
-                File upload = new File(path.getAbsolutePath(), "static/video/");
+                File upload = new File(path.getAbsolutePath(), "/static/video/");
                 if (!upload.exists()) upload.mkdirs();
                 String uploadPath = path + File.separator + oName;
                 File file1 = new File(uploadPath);

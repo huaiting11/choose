@@ -984,9 +984,26 @@ img.img-circle {
     float:right;
     margin-right: 30px;
 }
+.videoList{
+    margin-left: -30px;
+}
+.videoList div{
+     margin-left: 30px;
+     margin-top: 10px;
+     float: left;
+ }
 .videoD{
-    width:200px;
-    height: 50px;
+    width:285px;
+    height: 163px;
+    display: block;
+    margin-left: 30px;
+    margin-top: 10px;
+    float: left;
+}
+
+#p_info{
+    display: block;
+    clear: both;
 }
 /**************************************end ****************************************************************/
 @media (min-width: 768px) {

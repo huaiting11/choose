@@ -1,0 +1,177 @@
+/*整体div*/
+.div_all{
+	width: 100%;
+	height: 100%;
+	background-color: #FAFAFA;
+}
+/*登录*/
+.user_Signin{
+	width: 95px;
+	height: 42px;
+	float: left;
+	line-height: 38px;
+	border: 1px solid #4DA7FF;
+	border-radius: 5px;
+}
+.user_Signin input{
+	background-color: #FFFFFF;
+}
+/*注册*/
+.user_register{
+	width: 97px;
+	height: 44px;
+	float: left;
+	line-height: 42px;
+	background-color: #4DA7FF;
+	border-radius: 5px;
+	margin-left: 38px;
+}
+.user_register input{
+	background-color: #4DA7FF;
+}
+/*注册内容*/
+.all_register{	
+	width: 100%;
+	height: 500px;
+	background-color: red;
+	margin: 0 auto;
+}
+/*字体为蓝色*/
+.font_blue{
+	color: #4DA7FF;
+}
+.centent{
+	background-color: white;
+	width: 100%;
+	height: 86px;
+}
+.centent_tab{
+	width: 1200px;
+	height: 86px;
+	background-color: white;
+	line-height: 86px;
+	margin: 0 auto;
+}
+.tab{
+	list-style-type: none;
+}
+.tab_direction{
+	float: left;
+	margin-left: 30px;
+	font-size: 18px;
+}
+.tab_li{
+	margin-left: 43px;
+	float: left;
+	font-size: 18px;
+}
+
+
+/*IT互联网div*/
+.all_it{
+	width: 100%;
+	height: 100%;
+	background-color: #FFFFFF;
+	
+}
+.it{
+	width: 1240px;
+	height: 100%;
+	margin: 0 auto;
+	overflow: hidden;
+}
+
+/*视频及说明部分*/
+.video{
+	width: 285px;
+	height: 286px;
+	background-color: #F5F5F5;
+	margin-left: 20px;
+	margin-top: 22px;
+	margin-bottom: 10px;
+	float: left;
+}
+.video_img{
+	width: 285px;
+	height: 163px;
+	background-color: red;
+}
+.video_img video{
+	width: 285px;
+	height: 163px;
+}
+.video_explain{
+	width: 285px;
+	height: 123px;
+	
+}
+.video_explain p:nth-of-type(1){
+	font-size: 18px;
+	margin-top: 23px;
+	margin-left: 19px;
+}
+.video_explain p:nth-of-type(2){
+	font-size: 13px;
+	margin-top: 20px;
+	margin-left: 19px;
+	width: 238px;
+}
+/*分页*/
+.count{
+	height: 88px;
+	width: 100%;
+	background-color: white;
+}
+
+.clearfix:after, .clearfix:before{
+	display: table;
+ 	content: " ";
+}
+
+
+.paging,#p_info {
+    float: right;
+    padding-right: 90px;
+    margin-top: 18px;
+}
+.paging .activePage {
+    background-color: #5185E6;
+    border-color: #5185E6;
+    color: #FFFFFF;
+}
+.paging span {
+    float: left;
+    width: 50px;
+    height: 30px;
+    border: 1px solid #707070;
+    margin-left: 8px;
+    border-radius: 4px;
+    font-size: 14px;
+    text-align: center;
+	line-height: 30px;
+    cursor: pointer;
+}
+
+/*联系我们*/
+.all_Contact{
+	width: 100%;
+	height: 354px;
+	background-color: green;  
+	overflow: hidden;         
+}
+.contact{
+	width: 1200px;
+	height: 160px;
+	margin-top: 83px;
+	background-color: #707070;
+	margin: 85px auto;
+}
+/*底层div*/
+.all_bottom{
+	width: 100%;
+	height: 67px;
+	margin: auto auto;
+	text-align: center;
+	
+}
+
